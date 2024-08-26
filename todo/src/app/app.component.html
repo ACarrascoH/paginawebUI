@@ -1,9 +1,39 @@
 <div style="margin: 100px;">
   <h2 style="background-color:aqua; text-align:center;">Todo app</h2>
 
+
   <p *ngFor="let item of usuarios">
     &diams;{{item.nombre}}
     &diams;{{item.rut}}
     &diams;{{item.edad}}
+    <button (click)="eliminarUsuario(item.usuarioPK)">Eliminar</button>
   </p>
+</div>
+
+<div class="card">
+  <div class="card-body">
+      <h3>Nueva de Tarea</h3>
+      <div class="container">
+          <form [formGroup]="nuevoUsuarioForm" (ngSubmit)="agregarUsuario()" id="formulario">
+              <div class="mb-2">
+                  <label class="form-label">Rut</label>
+                  <input type="text" class="form-control" id="Titulo" formControlName="Rut"
+                      placeholder="Ingrese el rut de la persona">
+              </div>
+              <div class="mb-2">
+                  <label class="form-label">Descripción</label>
+                  <input type="text" class="form-control" id="Descripción" formControlName="Nombre"
+                      placeholder="Ingrese el nombre de la persona">
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Edad</label>
+                <input type="number" class="form-control" id="Descripción" formControlName="Edad"
+                    placeholder="Ingrese la edad de la persona">
+            </div>
+              <button type="submit" class="btn btn-primary" [disabled]="nuevoUsuarioForm.invalid" id="btn-ingresar">
+                  Ingresar
+              </button>
+          </form>
+      </div>
+  </div>
 </div>
